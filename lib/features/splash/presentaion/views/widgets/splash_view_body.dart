@@ -37,13 +37,14 @@ class _SplashViewBodyState extends State<SplashViewBody>
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Image.asset(AssetsPaths.logo),
+          Image.asset(AssetsData.logo),
           const SizedBox(height: 10),
           SlidingText(slidingAnimation: _slidingAnimation)
         ],
       ),
     );
   }
+
   void navigateToHomeView() {
     Future.delayed(const Duration(seconds: 2), () {
       Get.to(const HomeView(),
