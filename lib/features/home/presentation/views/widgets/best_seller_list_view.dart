@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
 import 'best_seller_list_view_item.dart';
 
 class BestSellerListView extends StatelessWidget {
@@ -9,12 +6,15 @@ class BestSellerListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          return const BestSellerListViewItem();
-        },
-      ),
+    return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return const Padding(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: BestSellerListViewItem(),
+        );
+      },
     );
   }
 }
