@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/assets.dart';
 
-class FeturedListViewItem extends StatelessWidget {
-  const FeturedListViewItem({
+class CustomBookImage extends StatelessWidget {
+  const CustomBookImage({
     super.key,
   });
 
@@ -16,7 +16,9 @@ class FeturedListViewItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             color: Colors.white,
             image: const DecorationImage(
-                image: AssetImage(AssetsData.testImage), fit: BoxFit.fill)),
+              image: AssetImage(AssetsData.testImage),
+              fit: BoxFit.fill,
+            )),
       ),
     );
   }
