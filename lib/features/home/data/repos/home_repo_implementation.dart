@@ -39,10 +39,14 @@ class HomeRepoImpl implements HomeRepo {
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
+        try {
+          books.add(BookModel.fromJson(item));
+        } catch (e) {
+         books.add(BookModel.fromJson(item));
+        }
       }
       return right(books);
-    } on Exception catch (e) {
+    } catch (e) {
       if (e is DioError) {
         return left(
           ServerFailure.fromDioError(e),
