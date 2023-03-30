@@ -25,13 +25,8 @@ class BooksAction extends StatelessWidget {
           ),
           Expanded(
             child: CustomButton(
-              onPressed: () async {
-                final Uri url = Uri.parse(book.volumeInfo.previewLink!);
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url);
-                } else {
-                  throw Exception('Could not launch $url');
-                }
+              onPressed: ()  {
+                customlaunchUrl(context, book.volumeInfo.previewLink! );
               },
               borderRadius: const BorderRadius.only(
                 bottomRight: Radius.circular(16),
@@ -39,12 +34,33 @@ class BooksAction extends StatelessWidget {
               ),
               backgroundColor: const Color(0xffEF8262),
               textColor: Colors.white,
-              text: "Preview",
+              text: getText(book),
               fontSize: 16,
             ),
           )
         ],
       ),
     );
+  }
+
+  Future<void> customlaunchUrl(context, url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Can\'t launch $uri'),
+        ),
+      );
+    }
+  }
+
+  String getText(BookModel book) {
+    if (book.volumeInfo.previewLink != null) {
+      return "Preview";
+    } else {
+      return "Not Avaliable";
+    }
   }
 }
