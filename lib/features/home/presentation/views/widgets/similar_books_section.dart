@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/styles.dart';
 
 class SimilarBooksSection extends StatelessWidget {
-  const SimilarBooksSection({super.key});
+  const SimilarBooksSection({super.key, required this.category});
+  final String category;
 
   @override
   Widget build(BuildContext context) {
