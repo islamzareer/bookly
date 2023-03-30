@@ -27,8 +27,7 @@ class FeaturedBooksListView extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: CustomBookImage(
                   imageUrl: state
-                          .books[index].volumeInfo.imageLinks?.thumbnail ??
-                      'https://developers.google.com/static/maps/documentation/maps-static/images/error-image-generic.png',
+                          .books[index].volumeInfo.imageLinks!.thumbnail
                 ),
               );
             },
